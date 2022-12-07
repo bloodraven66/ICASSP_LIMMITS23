@@ -64,7 +64,7 @@ def get_transcript(wav_file, model, processor, argmax=True):
 def hindi_proc(files):
     for idx, modelname in enumerate([HINDI_VAKYANSH_ASR, HINDI_AI4B_ASR]):
 
-        model, processor = get_Wav2Vec2ForCTC(HINDI_VAKYANSH_ASR)
+        model, processor = get_Wav2Vec2ForCTC(modelname)
         for filename in files:  
             transcript = get_transcript(filename, model, processor)
             save_transcript(filename, transcript, key=f'model{idx}')
