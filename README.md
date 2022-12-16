@@ -20,12 +20,12 @@ Speaker specific waveglow vocoders are used, trained with NVIDIA open sourced im
 Vocoders:
 
 The vocoder weights are shared through huggingface repositories - 
-https://huggingface.co/SYSPIN/Telugu_m_vocoder_waveglow
-https://huggingface.co/SYSPIN/Telugu_f_vocoder_waveglow
-https://huggingface.co/SYSPIN/Hindi_m_vocoder_waveglow
-https://huggingface.co/SYSPIN/Hindi_f_vocoder_waveglow
-https://huggingface.co/SYSPIN/Marathi_m_vocoder_waveglow
-https://huggingface.co/SYSPIN/Marathi_f_vocoder_waveglow
+https://huggingface.co/SYSPIN/Telugu_m_vocoder_waveglow <br>
+https://huggingface.co/SYSPIN/Telugu_f_vocoder_waveglow <br>
+https://huggingface.co/SYSPIN/Hindi_m_vocoder_waveglow <br>
+https://huggingface.co/SYSPIN/Hindi_f_vocoder_waveglow <br>
+https://huggingface.co/SYSPIN/Marathi_m_vocoder_waveglow <br>
+https://huggingface.co/SYSPIN/Marathi_f_vocoder_waveglow <br>
 
 
 
