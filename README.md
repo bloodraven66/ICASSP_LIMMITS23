@@ -19,7 +19,7 @@ Speaker specific waveglow vocoders are used, trained with NVIDIA open sourced im
 
 Vocoders:
 
-The vocoder weights are shared through huggingface repositories - 
+The vocoder weights are shared through huggingface repositories - <br>
 https://huggingface.co/SYSPIN/Telugu_m_vocoder_waveglow <br>
 https://huggingface.co/SYSPIN/Telugu_f_vocoder_waveglow <br>
 https://huggingface.co/SYSPIN/Hindi_m_vocoder_waveglow <br>
