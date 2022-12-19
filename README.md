@@ -54,13 +54,13 @@ Step 6: Start training with `python3 train.py hparams/track1.yaml`. Note that by
 
 Vocoders:
 
-The vocoder weights are shared through huggingface repositories - 
-https://huggingface.co/SYSPIN/Telugu_m_vocoder_waveglow
-https://huggingface.co/SYSPIN/Telugu_f_vocoder_waveglow
-https://huggingface.co/SYSPIN/Hindi_m_vocoder_waveglow
-https://huggingface.co/SYSPIN/Hindi_f_vocoder_waveglow
-https://huggingface.co/SYSPIN/Marathi_m_vocoder_waveglow
-https://huggingface.co/SYSPIN/Marathi_f_vocoder_waveglow
+The vocoder weights are shared through huggingface repositories - <br>
+https://huggingface.co/SYSPIN/Telugu_m_vocoder_waveglow <br>
+https://huggingface.co/SYSPIN/Telugu_f_vocoder_waveglow <br>
+https://huggingface.co/SYSPIN/Hindi_m_vocoder_waveglow <br>
+https://huggingface.co/SYSPIN/Hindi_f_vocoder_waveglow <br>
+https://huggingface.co/SYSPIN/Marathi_m_vocoder_waveglow <br>
+https://huggingface.co/SYSPIN/Marathi_f_vocoder_waveglow <br>
 
 
 
