@@ -6,12 +6,13 @@ dataset:
   forced_algined_path: /data/Sathvik/DeepForcedAligner_LIMMITS32_data/ #https://github.com/bloodraven66/DeepForcedAligner
   duration_path_postfix: _data_outputs/durations
   mel_path_postfix: _data/mels
-  token_postfix: _data/tokens/
-  symbols_file: data/symbols.pkl
+  token_map_name: tokens.npy 
+  token_save_path: /data/Database/SPGC/baseline_data/tokens
   speakers: ['M', 'F']
   force_untar: false
   force_getdur: false
   force_genfilelist: false
+  force_tokenize: false
   stop_prep: false
   num_proc: 48 # extract wav durations
   limit_total_dur: 5 #for track 1 and 3
@@ -35,18 +36,18 @@ track: track1
 model:
   name: ml_fastspeech
   model_config: hparams/track1_model.yaml
-  save_every: 100
+  save_every: 50
   lr: 0.0001
   weight_decay: 1e-6
-  num_epochs: 501
+  num_epochs: 101
   loader1_epochs: 50
   batch_size: 24
   chk_path: 'saved_models'
-  chk_tag: ''
+  chk_tag: 'v2'
   infer: false
   load_chk: false
   device: cuda:1
-  gen_sample_loc: "samples"
+  gen_sample_loc: "samples_v2"
   
 wandb_logging: 
   disable: false

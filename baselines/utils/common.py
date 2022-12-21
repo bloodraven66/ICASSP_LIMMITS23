@@ -36,12 +36,8 @@ def get_trainer(args):
     return trainer
 
 def get_model(args):
-    all_symbols = set()
-    symbol_paths = [os.path.join(args.dataset.forced_algined_path, '_'.join([ln, spk, args.dataset.symbols_file])) for ln in args.dataset.langs for spk in args.dataset.speakers]
-    for symbol_file in symbol_paths:
-        with open(symbol_file, 'rb') as f:
-            symbols = pickle.load(f)
-            all_symbols.update(symbols)
+    with open(os.path.join(args.dataset.metadata_path, '_'.join((args.track, args.dataset.token_map_name))), 'rb') as f:
+        all_symbols = np.load(f)
     fs_args = load_config(args.model.model_config)
     if args.track == 'track1':
         

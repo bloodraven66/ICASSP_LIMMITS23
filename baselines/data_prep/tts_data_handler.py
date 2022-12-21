@@ -1,6 +1,7 @@
 import os
 import random
 import shutil
+import numpy as np
 import librosa
 from . import tts_loader
 from pathlib import Path
@@ -14,6 +15,8 @@ def loaders(args):
     handle_untar(args)
     get_dur(args)
     loader_keys = make_filelist(args)
+
+    tokenize(args, 'train2' if args.track == 'track1' else 'train')
     if args.dataset.stop_prep: logger.info('Stopping..'); exit()
     loaders_ = {}
     for mode in loader_keys:
@@ -25,6 +28,33 @@ def loaders(args):
                           drop_last=True, collate_fn=collate_fn)
     return loaders_
 
+def tokenize(args, key):
+    save_path = os.path.join(args.dataset.metadata_path, args.track+'_'+args.dataset.token_map_name)
+    if os.path.exists(save_path) and not args.dataset.force_tokenize: return
+
+
+    txt_files = common.get_files(args.dataset.untar_path, '.txt')
+    txt_files = [str(t) for t in txt_files if 'metadata' not in str(t)]
+    symbol_dict = {}
+    if not os.path.exists(args.dataset.token_save_path):
+        os.mkdir(args.dataset.token_save_path)
+
+    logger.info('tokenising..')
+    for file in tqdm(txt_files):
+        token_save_path = os.path.join(args.dataset.token_save_path, Path(file).stem+'.npy')
+        with open(file, 'r') as f:
+            text = f.read()
+        tokens = []
+        for ch in text:
+            if ch not in symbol_dict:
+                symbol_dict[ch] = len(symbol_dict) + 1
+            tokens.append(symbol_dict[ch])
+        with open(token_save_path, 'wb') as f:
+            np.save(f, tokens)
+
+    with open(save_path, 'wb') as f:
+        np.save(f, list(symbol_dict.keys()))
+    
 
 def make_filelist(args, num_test_per_spk=20, num_val_per_spk=70):
     assert args.track in ['track1', 'track2', 'track3']
@@ -113,6 +143,7 @@ def handle_untar(args):
     req_folders = ['_'.join([l, s, str(i)]) for l in args.dataset.langs for s in args.dataset.speakers for i in range(1, 6)]
     existing_folders = os.listdir(args.dataset.untar_path)
     if 'metadata' in existing_folders: existing_folders.remove('metadata')
+    if 'tokens' in existing_folders: existing_folders.remove('tokens')
     if set(req_folders) == set(existing_folders):
         logger.info('All files found')
         if not args.dataset.force_untar: return

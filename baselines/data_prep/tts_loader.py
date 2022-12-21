@@ -32,7 +32,7 @@ class TTS_DATASET(Dataset):
         for spk in spk_level_ids:
             dur_path = os.path.join(args.dataset.forced_algined_path, spk + args.dataset.duration_path_postfix)
             mel_path = os.path.join(args.dataset.forced_algined_path, spk + args.dataset.mel_path_postfix)
-            token_path = os.path.join(args.dataset.forced_algined_path, spk + args.dataset.token_postfix)
+            token_path = args.dataset.token_save_path
             assert os.path.exists(dur_path), f'{dur_path}'
             
             for f in spk_level_ids[spk]:
