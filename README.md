@@ -11,7 +11,7 @@ We are sharing a baseline for track1. Check the `baselines` folder the codes. Th
 
 The baseline is a multilingual fastspeech model with learnable speaker embeddings. A fork of `DeepForcedAligner` is used to align and extract durations for each speaker (`https://github.com/bloodraven66/DeepForcedAligner`). This repostory is used to extract speech features as well as tokenising the text. The TTS model is trained with 5 hrs of data from each speaker, trained with curriculum learning strategy. 3 hours of shorter wavs (by duration) per speaker are used to train for 100 epochs. After that, 2 hours of random data is added per speaker, and trained further for 400 more epochs.
 
-The utterance level durations from the aligner is shared at `https://www.dropbox.com/sh/yfjwonzrdl5y13q/AACChRwzyqt-7Ae498lg35_9a?dl=0`, with the symbol at `https://www.dropbox.com/scl/fo/wos0ayhhtqs7g5qwxm1tn/h?dl=0&rlkey=mc6yl00h3vus0c3555qbpk13h`.
+The utterance level durations from the aligner is shared at `https://www.dropbox.com/sh/yfjwonzrdl5y13q/AACChRwzyqt-7Ae498lg35_9a?dl=0`, this will only work with the raw text.
 
 Speaker specific waveglow vocoders are used, trained with NVIDIA open sourced implementation. We use a fork (`https://github.com/bloodraven66/waveglow_for_LIMMITS23`) with custom inference file `infer.py`
 
@@ -26,7 +26,7 @@ Step 3: Use baselines/train.py to untar all downloaded files. Run it with the `p
 
 Step 4: Use `DeepForcedAligner` to preprocess data. Set dataset_dir = data save path from previous step. Change metadata_path to {language}_{gender} combinations, eg: Hindi_M . Repeat it 6 times to preprocess all speakers.
 
-Step 5: To start training the model, change paths for tokens and saved mel spectrograms in `track1.yaml`. If you are using the durations shared above, download it and specify the paths for it as well. The durations are expected to be in `DeepForcedAligner_LIMMITS32_data/{language}_{gender}_data_outputs/durations` and tokens to be in `DeepForcedAligner_LIMMITS32_data/{language}_{gender}_data/tokens`. 
+Step 5: To start training the model, change paths for saved mel spectrograms in `track1.yaml`. If you are using the durations shared above, download it and specify the paths for it as well. The durations are expected to be in `DeepForcedAligner_LIMMITS32_data/{language}_{gender}_data_outputs/durations`. 
 
 For example: <br>
 DeepForcedAligner_LIMMITS32_data/ <br>
