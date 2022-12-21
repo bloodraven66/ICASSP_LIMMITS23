@@ -1,0 +1,8 @@
+torch
+numpy
+librosa
+matplotlib
+wandb
+tqdm
+coloredlogs
+attrdict

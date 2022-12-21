@@ -1,16 +1,16 @@
-import yaml
 import os
-import librosa
-import pickle
+import yaml
 import torch
-from tqdm import tqdm
+import librosa
 import numpy as np
+from tqdm import tqdm
 from pathlib import Path
-from utils.logger import logger
 from attrdict import AttrDict
+from models import fastspeech
+from utils.logger import logger
 from data_prep import tts_data_handler
 from trainers import track1_trainer, track2_trainer
-from models import fastspeech
+
 
 def load_config(yaml_file):
     with open(yaml_file) as f:

@@ -1,21 +1,15 @@
-import os, sys
+import os 
+import sys
 import torch
-from models.fastspeech import FastSpeechLoss
-from utils.wandb_logger import WandbLogger
-from tqdm import tqdm
-import matplotlib.pyplot as plt
-os.environ["WANDB_SILENT"] = "true"
-import logging
-import librosa
-from g2p_en import G2p
-import pickle
-from utils import common
-import soundfile as sf
-
 import numpy as np
-from utils.logger import logger
+from tqdm import tqdm
 from utils import common
+import matplotlib.pyplot as plt
+from utils.logger import logger
+from utils.wandb_logger import WandbLogger
+from models.fastspeech import FastSpeechLoss
 
+os.environ["WANDB_SILENT"] = "true"
 
 class Train_loop():
     def __init__(self, args, model):

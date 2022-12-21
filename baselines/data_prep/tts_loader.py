@@ -1,10 +1,9 @@
-from torch.utils.data import Dataset
 import os
-from pathlib import Path
-import numpy as np
 import torch
+import numpy as np
+from pathlib import Path
 from utils.logger import logger
-
+from torch.utils.data import Dataset
 
 class TTS_DATASET(Dataset):
     def __init__(self, mode, args):

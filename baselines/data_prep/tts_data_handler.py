@@ -1,15 +1,16 @@
 import os
-import random
 import shutil
-import numpy as np
+import random
 import librosa
+import numpy as np
+from tqdm import tqdm
 from . import tts_loader
 from pathlib import Path
-from torch.utils.data import DataLoader
-from utils.logger import logger
-from tqdm import tqdm
-from multiprocessing import Pool
 from utils import common
+from utils.logger import logger
+from multiprocessing import Pool
+from torch.utils.data import DataLoader
+
 
 def loaders(args):
     handle_untar(args)

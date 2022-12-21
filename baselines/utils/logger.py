@@ -1,7 +1,7 @@
-import logging
 import os
-import coloredlogs
+import logging
 import warnings
+import coloredlogs
 warnings.simplefilter(action='ignore', category=FutureWarning)
 os.environ['COLOREDLOGS_LOG_FORMAT']='[%(asctime)s] %(message)s'
 logger = logging.getLogger(__name__)
