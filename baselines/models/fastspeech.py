@@ -338,7 +338,7 @@ class FastSpeech(nn.Module):
 
 
 
-    def forward(self, inputs, use_gt_pitch=True, pace=1.0, max_duration=75, infer=False, flip_index=False):
+    def forward(self, inputs, pace=1.0, infer=False):
 
 
         (inputs, input_lens, mel_tgt, mel_lens, speaker, filenames, dur_tgt) = inputs
@@ -352,7 +352,7 @@ class FastSpeech(nn.Module):
             spk_emb = self.speaker_emb(speaker).unsqueeze(1)
             spk_emb.mul_(self.speaker_emb_weight)
         
-        enc_out, enc_mask = self.encoder(inputs)
+        enc_out, enc_mask = self.encoder(inputs, conditioning=spk_emb)
         attn_mask = mask_from_lens(input_lens)[..., None] == 0
         log_dur_pred = self.duration_predictor(enc_out, enc_mask).squeeze(-1)
         dur_pred = torch.clamp(torch.exp(log_dur_pred) - 1, 0, None)
@@ -361,7 +361,7 @@ class FastSpeech(nn.Module):
         dec_out, dec_mask = self.decoder(len_regulated, dec_lens)
         mel_out = self.proj(dec_out)
         if dur_tgt is None:
-            return mel_out, dec_lens
+            return mel_out, dec_mask
         return (mel_out, dec_mask, dur_pred, log_dur_pred)
 
 
