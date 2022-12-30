@@ -7,7 +7,7 @@ For any queries, contact challenge.syspin@iisc.ac.in
 
 Baseline:
 
-We are sharing a baseline for track1. Check the `baselines` folder the codes. The pretrained model is shared through a huggingface repository - `https://huggingface.co/SYSPIN/LIMMITS_track1_baseline`. The samples from the model is shared at `baselines/track1_samples`.
+We are sharing a baseline for track1. Check the `baselines` folder the codes. The pretrained model is shared through a huggingface repository - `https://huggingface.co/SYSPIN/LIMMITS_track1_baseline`. The symbol mapping for the baseline model is also shared. (idx 0 == padding, rest follow the order from .npy file) The samples from the model is shared at `baselines/track1_samples`.
 
 The baseline is a multilingual fastspeech model with learnable speaker embeddings. A fork of `DeepForcedAligner` is used to align and extract durations for each speaker (`https://github.com/bloodraven66/DeepForcedAligner`). This repostory is used to extract speech features as well as tokenising the text. The TTS model is trained with 5 hrs of data from each speaker, trained with curriculum learning strategy. 3 hours of shorter wavs (by duration) per speaker are used to train for 100 epochs. After that, 2 hours of random data is added per speaker, and trained further for 400 more epochs.
 
