@@ -1,0 +1,6 @@
+embedding - 1536
+encoder - 2400000
+decoder - 2400000
+projection - 20480
+
+total - 4822016
